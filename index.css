@@ -1,29 +1,80 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+  }
+  :root{
+    --dim-grey:#a0a0a0;
+    --black:#000000;
+    --2nd-Color:#ffb92a;
+    --white:#ffffff;
+    --dim-Black:#201f28;
+    --shadow-Color1: rgba(0, 0, 0, 0.2);
   }
   body {
     height: 100vh;
-    background: linear-gradient(#000000 50%, #ffb92a 50%);
+    padding: 50px 0px;   
+    background-image: linear-gradient(var(--black) 50%, var(--2nd-Color) 50%);
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: overlay;
   }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--dim-grey);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--dim-Black);
+  }
+  #loading {
+    width: 5rem;
+    height: 5rem;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    border: 5px solid var(--white);
+    border-top: 6px solid var(--2nd-Color);
+    z-index: 999;
+    position: fixed;
+    border-radius: 100%;
+    align-items: center;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+}
+#loading.display {
+    visibility: visible;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
   .container {
     font-size: 16px;
-    width: 90vw;
+    width:95vw;
     max-width: 37.5em;
     padding: 3em 1.8em;
     background-color: #201f28;
-    /* position: absolute;
-    transform: translate(-50%, -50%); */
-    /* top: 50%;
-    left: 50%; */
-    border-radius: 0.6em;
-    box-shadow: 1.2em 2em 3em rgba(0, 0, 0, 0.2);
-  }
+    border-radius: 1rem;
+    margin: 10px;
+    box-shadow: 1.2em 2em 3em var(--dim-Black);
+    overflow-x: hidden !important;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
   .search-container {
     display: grid;
     grid-template-columns: 9fr 3fr;
@@ -37,20 +88,21 @@
   }
   .search-container input {
     background-color: transparent;
-    border: 1px solid #a0a0a0;
+    border: 1px solid var(--white);
     padding: 0.7em;
-    color: #ffffff;
+    color: var(--white);
   }
   .search-container input:focus {
-    border-color: #ffffff;
+    border-color: var(--white);
   }
   .search-container button {
-    background-color: #ffb92a;
+    background-color: var(--2nd-Color);
     border: none;
     cursor: pointer;
+    padding: 10px;
   }
   #result {
-    color: #ffffff;
+    color: var(--white);
   }
   .info {
     position: relative;
@@ -74,12 +126,13 @@
     justify-content: center;
     gap: 0.6em;
     margin: 0.6em 0 0.9em 0;
+    padding: 1.5rem 2rem;
   }
   .rating img {
-    width: 1.2em;
+    width: 1.6em;
   }
   .rating h4 {
-    display: inline-block;
+    display: flex;
     font-size: 1.1em;
     font-weight: 500;
   }
@@ -88,7 +141,7 @@
     font-size: 0.95em;
     gap: 1em;
     justify-content: center;
-    color: #a0a0a0;
+    color: var(--dim-grey);
     margin: 0.6em 0;
     font-weight: 300;
   }
@@ -97,7 +150,7 @@
     justify-content: space-around;
   }
   .genre div {
-    border: 1px solid #a0a0a0;
+    border: 1px solid var(--dim-grey);
     font-size: 0.75em;
     padding: 0.4em 1.6em;
     border-radius: 0.4em;
@@ -112,7 +165,7 @@
     font-weight: 300;
     line-height: 1.8em;
     text-align: justify;
-    color: #a0a0a0;
+    color: var(--dim-grey);
   }
   .msg {
     text-align: center;
@@ -121,17 +174,49 @@
     .container {
       font-size: 14px;
     }
+    body{
+      height: 100%; 
+    }
     .info {
       grid-template-columns: 1fr;
+      justify-content: center;
     }
     .poster {
       margin: auto;
       width: auto;
       max-height: 10.8em;
     }
+    .genre {
+      display: flex;
+      justify-content: center;
+      gap:1.5rem;
+    }
+    .search-container{
+      display: flex;
+      justify-content: center;
+      gap:1rem;
+    }
+    .rating img {
+      width: 1.1em;
+    }
+    .rating h4 {
+      display: flex;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
   }
   @media screen and (max-width: 320px) {
     .container {
       margin-top: 10rem;
-    }    
+    }
+    .genre {
+      display: flex;
+      justify-content: center;
+      gap:1.5rem;
+    }
+    .search-container{
+      display: flex;
+      justify-content: center;
+      gap:1rem;
+    } 
   }
