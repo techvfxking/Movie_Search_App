@@ -46,7 +46,7 @@ let getMovie = () => {
                         <span>${data.Runtime}</span>
                     </div>
                     <div class="genre">
-                        <div>${data.Genre.split(",").join("</div><div>")}</div>
+                        <div style="cursor: pointer;">${data.Genre.split(",").join("</div><div style='cursor: pointer;'>")}</div>
                     </div>
                 </div>
             </div>
